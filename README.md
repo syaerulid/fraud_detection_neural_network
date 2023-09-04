@@ -17,7 +17,9 @@ so if you want to run this streamlit app on your own directory, follow the instr
    ```bash
    git clone https://github.com/syaerulid/fraud_detection_neural_network.git
 
-2. ```bash
+2. Change to file directory
+   ```bash
    cd fraud_detection_neural_network/Deployment
-3. ```bash
+4. Run the streamlit app
+   ```bash
    streamlit run fraud_tx.py
