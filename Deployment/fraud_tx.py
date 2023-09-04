@@ -12,7 +12,7 @@ from PIL import Image
 
 # In[2]:
 
-
+@st.cache
 def load_and_transform():
     # load
     df1 = pd.read_csv("Deployment/cc_info.csv")
@@ -65,7 +65,7 @@ result = load_and_transform()
 
 # In[4]:
 
-
+@st.cache
 def header():
     image = Image.open("Deployment/fraud_detect.png")
     st.image(image, caption="Example of Fraud Activities")
@@ -73,7 +73,7 @@ def header():
 
 # In[5]:
 
-
+@st.cache
 def main_page(df_mix_snip, df3_head, df4_head, df5_head, df6_head, df7_head, df8):
     tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(['Load DataFrame','Viz','Outlier Handling','Standardization','Modeling','Result','Maps'])
     
@@ -143,7 +143,7 @@ def main_page(df_mix_snip, df3_head, df4_head, df5_head, df6_head, df7_head, df8
 
     
     
-    
+@st.cache   
 def sidebar():
     st.sidebar.markdown("## Sidebar")
     st.sidebar.subheader("Why Fraud Detection Matters:")
@@ -174,6 +174,7 @@ def sidebar():
 
 
 df3 = result[5]
+@st.cache
 def visualization(df3):
     # 1. Distribution of transaction hour
 
@@ -336,7 +337,7 @@ def visualization(df3):
 
 # In[7]:
 
-
+@st.cache
 def outlier_handling():
     code = """
     df_outlier = pd.DataFrame()
@@ -362,7 +363,7 @@ def outlier_handling():
 
 # In[8]:
 
-
+@st.cache
 def standardization():
     code = """
     from sklearn.preprocessing import StandardScaler
@@ -396,7 +397,7 @@ def standardization():
 
 # In[9]:
 
-
+@st.cache
 def early_stopping():
     code = """
     from tensorflow.keras.callbacks import EarlyStopping
@@ -418,7 +419,7 @@ def early_stopping():
 
 # In[10]:
 
-
+@st.cache
 def modeling():
     code = """
     # define input layer
@@ -469,7 +470,7 @@ def modeling():
 
 # In[11]:
 
-
+@st.cache
 def reconstruct_data():
     code = """
     # calculate reconstruction errors for training data
@@ -525,13 +526,14 @@ def reconstruct_data():
 
 
 df8_head = result[15]
+@st.cache
 def final_result(df8_head):
     st.dataframe(df8_head)
 
 
 # In[13]:
 
-
+@st.cache
 def text_input():
     user_input = st.text_input("Search specific keyword from this dataframe")
     
@@ -544,7 +546,7 @@ def text_input():
 
 # In[14]:
 
-
+@st.cache
 def explanation():
     expander = st.expander("Explanation about the result")
     expander.write("""
@@ -557,7 +559,7 @@ def explanation():
 
 # In[15]:
 
-
+@st.cache
 def maps():
     image = Image.open("Deployment/fraud_map.png")
     expander = st.expander("Fraud Map")
