@@ -7,3 +7,17 @@ By leveraging advanced machine learning techniques, this research aims to enhanc
 
 You can check this link for more info
 https://fraud-detect-nn.streamlit.app/
+
+## Running the Streamlit App on your own directory
+I already includes dependencies on requirements.txt, <br>
+so if you want to run this streamlit app on your own directory, follow the instruction below:
+
+1. Clone the Git repository to your local machine:
+
+   ```bash
+   git clone https://github.com/syaerulid/fraud_detection_neural_network.git
+
+2. ```bash
+   cd fraud_detection_neural_network/Deployment
+3. ```bash
+   streamlit run fraud_tx.py
