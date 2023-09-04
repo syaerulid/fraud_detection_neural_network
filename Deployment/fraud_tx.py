@@ -3,7 +3,7 @@
 
 import subprocess
 # Define the path to the requirements.txt file
-requirements_file = "requirements.txt"
+requirements_file = "Deployment/requirements.txt"
 
 # Read the content of the requirements file
 with open(requirements_file, "r") as file:
