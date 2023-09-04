@@ -1,13 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import subprocess
-# Define the path to the requirements.txt file
-requirements_file = "Deployment/requirements.txt"
-
-# Use pip to install the listed dependencies
-subprocess.check_call(["pip", "install", "-r", requirements_file])
-
 
 import pandas as pd
 import matplotlib.pyplot as plt
