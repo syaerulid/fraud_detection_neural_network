@@ -5,13 +5,8 @@ import subprocess
 # Define the path to the requirements.txt file
 requirements_file = "Deployment/requirements.txt"
 
-# Read the content of the requirements file
-with open(requirements_file, "r") as file:
-    requirements = file.readlines()
-
-# Install the listed dependencies using pip
-for package in requirements:
-    subprocess.check_call(["pip", "install", package.strip()])
+# Use pip to install the listed dependencies
+subprocess.check_call(["pip", "install", "-r", requirements_file])
 
 
 import pandas as pd
