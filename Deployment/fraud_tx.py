@@ -15,12 +15,12 @@ from PIL import Image
 
 def load_and_transform():
     # load
-    df1 = pd.read_csv("cc_info.csv")
-    df2 = pd.read_csv("transactions_cc.csv")
+    df1 = pd.read_csv("Deployment/cc_info.csv")
+    df2 = pd.read_csv("Deployment/transactions_cc.csv")
     df_mix = df2.merge(df1, how = 'left', left_on = 'credit_card', right_on = 'credit_card')
     df_mix.rename(columns = {'credit_card' : 'unique_tx'}, inplace = True)
     df_mix_snip = df_mix.head()
-    df3 = pd.read_csv("dataframe_ft_eng.csv")
+    df3 = pd.read_csv("Deployment/dataframe_ft_eng.csv")
     # transform
 
     df3.drop(columns = ['Unnamed: 0'], inplace = True)
@@ -34,23 +34,23 @@ def load_and_transform():
 
     df3['session'] = df3['session'].replace(replace_dict)
     
-    df4 = pd.read_csv("df_model.csv")
+    df4 = pd.read_csv("Deployment/df_model.csv")
     df4.drop(columns = ['Unnamed: 0'], inplace = True)
     df4_head = df4.head()
     
-    df5 = pd.read_csv("df_outlier.csv")
+    df5 = pd.read_csv("Deployment/df_outlier.csv")
     df5.drop(columns = ['Unnamed: 0'], inplace = True)
     df5_head = df5.head()
     
-    df6 = pd.read_csv("df_stdz.csv")
+    df6 = pd.read_csv("Deployment/df_stdz.csv")
     df6.drop(columns = ['Unnamed: 0'], inplace = True)
     df6_head = df6.head()
     
-    df7 = pd.read_csv("result_data.csv")
+    df7 = pd.read_csv("Deployment/result_data.csv")
     df7.drop(columns = ['Unnamed: 0'], inplace = True)
     df7_head = df7.groupby(['Classification']).size().reset_index(name = 'count')
     
-    df8 = pd.read_csv("df_result_final.csv")
+    df8 = pd.read_csv("Deployment/df_result_final.csv")
     df8.drop(columns = ['Unnamed: 0'], inplace = True)
     df8_head = df8.head()
 
@@ -67,7 +67,7 @@ result = load_and_transform()
 
 
 def header():
-    image = Image.open("fraud_detect.png")
+    image = Image.open("Deployment/fraud_detect.png")
     st.image(image, caption="Example of Fraud Activities")
 
 
@@ -462,7 +462,7 @@ def modeling():
     Thanks to the early stopping criteria we set, 
     we didn't need to go through all 50 epochs; instead, the training stopped at the 31st epoch.""")
     
-    image = Image.open("plot_val.png")
+    image = Image.open("Deployment/plot_val.png")
     expander = st.expander("Click Here, to look the plot")
     expander.image(image)
 
@@ -559,7 +559,7 @@ def explanation():
 
 
 def maps():
-    image = Image.open("fraud_map.png")
+    image = Image.open("Deployment/fraud_map.png")
     expander = st.expander("Fraud Map")
     expander.image(image)
     
@@ -567,7 +567,7 @@ def maps():
     st.markdown("[Interactive Version of Fraud Map](https://public.tableau.com/app/profile/syaerul.rochman/viz/fraudmap_16938269689100/fraud_map)")
     
     
-    image_2 = Image.open("normal_map.png")
+    image_2 = Image.open("Deployment/normal_map.png")
     expander = st.expander("Normal Map")
     expander.image(image_2)
     
