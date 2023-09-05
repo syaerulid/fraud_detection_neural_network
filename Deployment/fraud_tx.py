@@ -59,7 +59,6 @@ def header():
     image = Image.open("Deployment/fraud_detect.png")
     st.image(image, caption="Example of Fraud Activities")
     
-@st.cache_data(experimental_allow_widgets=True)
 def main_page(df_mix_snip, df3_head, df4_head, df5_head, df6_head, df7_head, df8):
     tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(['Load DataFrame','Viz','Outlier Handling','Standardization','Modeling','Result','Maps'])
     
@@ -313,7 +312,7 @@ def visualization(df3):
     expander = st.expander("See the Explanation about this Chart")
     expander.write("""Based on the histogram above, credit card limit have left skew distribution""")
 
-
+@st.cache_data(experimental_allow_widgets=True)
 def outlier_handling():
     code = """
     df_outlier = pd.DataFrame()
@@ -335,7 +334,8 @@ def outlier_handling():
     df_outlier['session_Evening-Night'] = df_model['session_Evening-Night']
     """
     st.code(code, language='python')
-
+    
+@st.cache_data(experimental_allow_widgets=True)
 def standardization():
     code = """
     from sklearn.preprocessing import StandardScaler
@@ -365,7 +365,7 @@ def standardization():
     df_outlier[columns_to_standardize] = stdz_data
     """
     st.code(code, language='python')
-
+@st.cache_data(experimental_allow_widgets=True)
 def early_stopping():
     code = """
     from tensorflow.keras.callbacks import EarlyStopping
@@ -384,6 +384,7 @@ def early_stopping():
     after some number of patience (interval epochs wait before stop). 
     Using Early Stopping we can stop training model before they begin to overfit""")
     
+@st.cache_data(experimental_allow_widgets=True)    
 def modeling():
     code = """
     # define input layer
@@ -434,7 +435,7 @@ def modeling():
 
 # In[11]:
 
-
+@st.cache_data(experimental_allow_widgets=True)
 def reconstruct_data():
     code = """
     # calculate reconstruction errors for training data
@@ -495,7 +496,8 @@ def text_input():
     # display the filtered df
     st.write("Result:")
     st.dataframe(filtered_df)
-
+    
+@st.cache_data(experimental_allow_widgets=True)
 def explanation():
     expander = st.expander("Explanation about the result")
     expander.write("""
@@ -505,6 +507,7 @@ def explanation():
     By doing this, we create a dependent variable or column for classification, which can be used for supervised learning classification tasks in the future.
     """)
     
+@st.cache_data(experimental_allow_widgets=True)    
 def maps():
     image = Image.open("Deployment/fraud_map.png")
     expander = st.expander("Fraud Map")
