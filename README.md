@@ -15,7 +15,7 @@ The primary objective of this project is to develop a robust fraud detection sys
 
 By implementing this approach, we aim to significantly improve the accuracy of fraud detection, thereby safeguarding financial transactions and minimizing the impact of fraudulent activities.
 
-For more information, you can visit the [Fraud Detection Streamlit App](https://fraud-detect-nn.streamlit.app/).
+For more information, you can visit the [Fraud Detection Streamlit App](https://fraud-detect.streamlit.app/).
 
 ## Running the Streamlit App on your own directory
 I already includes dependencies in `requirements.txt`, <br>
