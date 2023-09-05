@@ -54,6 +54,7 @@ def load_and_transform():
 
 result = load_and_transform()
 
+@st.cache_data
 def header():
     image = Image.open("Deployment/fraud_detect.png")
     st.image(image, caption="Example of Fraud Activities")
@@ -151,6 +152,7 @@ def sidebar():
     st.sidebar.write("https://www.linkedin.com/in/syaerul-rochman/")
 
 df3 = result[5]
+st.cache_resource
 def visualization(df3):
     # 1. Distribution of transaction hour
 
@@ -333,10 +335,6 @@ def outlier_handling():
     """
     st.code(code, language='python')
 
-
-# In[8]:
-
-
 def standardization():
     code = """
     from sklearn.preprocessing import StandardScaler
@@ -367,10 +365,6 @@ def standardization():
     """
     st.code(code, language='python')
 
-
-# In[9]:
-
-
 def early_stopping():
     code = """
     from tensorflow.keras.callbacks import EarlyStopping
@@ -388,7 +382,8 @@ def early_stopping():
     if there is no improvement of validation loss using (min_delta) to count 
     after some number of patience (interval epochs wait before stop). 
     Using Early Stopping we can stop training model before they begin to overfit""")
-
+    
+st.cache_data
 def modeling():
     code = """
     # define input layer
@@ -489,6 +484,7 @@ def reconstruct_data():
     """)
     
 df8_head = result[15]
+st.cache_data
 def final_result(df8_head):
     st.dataframe(df8_head)
 
@@ -509,7 +505,8 @@ def explanation():
     
     By doing this, we create a dependent variable or column for classification, which can be used for supervised learning classification tasks in the future.
     """)
-
+    
+st.cache_data
 def maps():
     image = Image.open("Deployment/fraud_map.png")
     expander = st.expander("Fraud Map")
