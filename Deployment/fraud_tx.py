@@ -312,7 +312,7 @@ def visualization(df3):
     expander = st.expander("See the Explanation about this Chart")
     expander.write("""Based on the histogram above, credit card limit have left skew distribution""")
 
-@st.cache_data(experimental_allow_widgets=True)
+@st.cache_resource
 def outlier_handling():
     code = """
     df_outlier = pd.DataFrame()
@@ -335,7 +335,7 @@ def outlier_handling():
     """
     st.code(code, language='python')
     
-@st.cache_data(experimental_allow_widgets=True)
+@st.cache_resource
 def standardization():
     code = """
     from sklearn.preprocessing import StandardScaler
@@ -384,7 +384,7 @@ def early_stopping():
     after some number of patience (interval epochs wait before stop). 
     Using Early Stopping we can stop training model before they begin to overfit""")
     
-@st.cache_data(experimental_allow_widgets=True)    
+@st.cache_resource    
 def modeling():
     code = """
     # define input layer
@@ -432,10 +432,7 @@ def modeling():
     expander = st.expander("Click Here, to look the plot")
     expander.image(image)
 
-
-# In[11]:
-
-@st.cache_data(experimental_allow_widgets=True)
+@st.cache_resource
 def reconstruct_data():
     code = """
     # calculate reconstruction errors for training data
@@ -488,6 +485,7 @@ df8_head = result[15]
 def final_result(df8_head):
     st.dataframe(df8_head)
 
+@st.cache_data
 def text_input():
     user_input = st.text_input("Search specific keyword from this dataframe")
     
@@ -497,7 +495,7 @@ def text_input():
     st.write("Result:")
     st.dataframe(filtered_df)
     
-@st.cache_data(experimental_allow_widgets=True)
+@st.cache_resource
 def explanation():
     expander = st.expander("Explanation about the result")
     expander.write("""
@@ -507,7 +505,7 @@ def explanation():
     By doing this, we create a dependent variable or column for classification, which can be used for supervised learning classification tasks in the future.
     """)
     
-@st.cache_data(experimental_allow_widgets=True)    
+@st.cache_resource
 def maps():
     image = Image.open("Deployment/fraud_map.png")
     expander = st.expander("Fraud Map")
