@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -9,10 +8,6 @@ import seaborn as sns
 import streamlit as st
 from PIL import Image
 
-
-# In[2]:
-
-@st.cache_data
 def load_and_transform():
     # load
     df1 = pd.read_csv("Deployment/cc_info.csv")
@@ -56,24 +51,12 @@ def load_and_transform():
 
     return df1, df2, df_mix, df_mix_snip, df3, df3_head, df4, df4_head, df5, df5_head, df6, df6_head, df7, df7_head, df8, df8_head
 
-
-# In[3]:
-
-
 result = load_and_transform()
 
-
-# In[4]:
-
-@st.cache_data
 def header():
     image = Image.open("Deployment/fraud_detect.png")
     st.image(image, caption="Example of Fraud Activities")
 
-
-# In[5]:
-
-@st.cache_data
 def main_page(df_mix_snip, df3_head, df4_head, df5_head, df6_head, df7_head, df8):
     tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(['Load DataFrame','Viz','Outlier Handling','Standardization','Modeling','Result','Maps'])
     
@@ -141,9 +124,6 @@ def main_page(df_mix_snip, df3_head, df4_head, df5_head, df6_head, df7_head, df8
         st.subheader("this is our map")
         maps()
 
-    
-    
-@st.cache_data
 def sidebar():
     st.sidebar.markdown("## Sidebar")
     st.sidebar.subheader("Why Fraud Detection Matters:")
@@ -169,12 +149,7 @@ def sidebar():
     st.sidebar.write("https://www.twitter.com/syaerulid")
     st.sidebar.write("https://www.linkedin.com/in/syaerul-rochman/")
 
-
-# In[6]:
-
-
 df3 = result[5]
-@st.cache_data
 def visualization(df3):
     # 1. Distribution of transaction hour
 
@@ -335,9 +310,6 @@ def visualization(df3):
     expander.write("""Based on the histogram above, credit card limit have left skew distribution""")
 
 
-# In[7]:
-
-@st.cache_data
 def outlier_handling():
     code = """
     df_outlier = pd.DataFrame()
@@ -363,7 +335,7 @@ def outlier_handling():
 
 # In[8]:
 
-@st.cache_data
+
 def standardization():
     code = """
     from sklearn.preprocessing import StandardScaler
@@ -397,7 +369,7 @@ def standardization():
 
 # In[9]:
 
-@st.cache_data
+
 def early_stopping():
     code = """
     from tensorflow.keras.callbacks import EarlyStopping
@@ -416,10 +388,6 @@ def early_stopping():
     after some number of patience (interval epochs wait before stop). 
     Using Early Stopping we can stop training model before they begin to overfit""")
 
-
-# In[10]:
-
-@st.cache_data
 def modeling():
     code = """
     # define input layer
@@ -470,7 +438,7 @@ def modeling():
 
 # In[11]:
 
-@st.cache_data
+
 def reconstruct_data():
     code = """
     # calculate reconstruction errors for training data
@@ -519,21 +487,10 @@ def reconstruct_data():
     they are valid transaction
     """)
     
-    
-
-
-# In[12]:
-
-
 df8_head = result[15]
-@st.cache_data
 def final_result(df8_head):
     st.dataframe(df8_head)
 
-
-# In[13]:
-
-@st.cache_data
 def text_input():
     user_input = st.text_input("Search specific keyword from this dataframe")
     
@@ -543,10 +500,6 @@ def text_input():
     st.write("Result:")
     st.dataframe(filtered_df)
 
-
-# In[14]:
-
-@st.cache_data
 def explanation():
     expander = st.expander("Explanation about the result")
     expander.write("""
@@ -556,10 +509,6 @@ def explanation():
     By doing this, we create a dependent variable or column for classification, which can be used for supervised learning classification tasks in the future.
     """)
 
-
-# In[15]:
-
-@st.cache_data
 def maps():
     image = Image.open("Deployment/fraud_map.png")
     expander = st.expander("Fraud Map")
@@ -576,9 +525,6 @@ def maps():
     st.markdown("[Interactive Version of Normal Map](https://public.tableau.com/app/profile/syaerul.rochman/viz/normal_tx/city)")
 
 
-# In[ ]:
-
-
 if __name__ == "__main__":
     df1, df2, df_mix, df_mix_snip, df3, df3_head, df4, df4_head, df5, df5_head, df6, df6_head, df7, df7_head, df8, df8_head = load_and_transform()
     
@@ -588,23 +534,4 @@ if __name__ == "__main__":
     
     # sidebar
     sidebar()
-    
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
 
