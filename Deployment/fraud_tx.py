@@ -8,6 +8,7 @@ import seaborn as sns
 import streamlit as st
 from PIL import Image
 
+@st.cache_data
 def load_and_transform():
     # load
     df1 = pd.read_csv("Deployment/cc_info.csv")
