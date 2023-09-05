@@ -497,18 +497,7 @@ def explanation():
     """)
     
 def maps():
-    image = Image.open("Deployment/fraud_map.png")
-    expander = st.expander("Fraud Map")
-    expander.image(image)
-    
-    # 
     st.markdown("[Interactive Version of Fraud Map](https://public.tableau.com/app/profile/syaerul.rochman/viz/fraudmap_16938269689100/fraud_map)")
-    
-    
-    image_2 = Image.open("Deployment/normal_map.png")
-    expander = st.expander("Normal Map")
-    expander.image(image_2)
-    
     st.markdown("[Interactive Version of Normal Map](https://public.tableau.com/app/profile/syaerul.rochman/viz/normal_tx/city)")
 
 if __name__ == "__main__":
