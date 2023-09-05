@@ -174,8 +174,6 @@ def visualization(df3):
         also from hours 5-10 there is almost no transaction happened
     """)
 
-    
-
     # 2. Distribution of tx count by Day
     tx_day_distri = df3.groupby(['day_of_the_week']).size().reset_index(name='tx_count')
     tx_day_sort = tx_day_distri.sort_values('tx_count')
@@ -201,7 +199,6 @@ def visualization(df3):
     while Sunday - Tuesday
     recorded *lowest transaction* activity
     """)
-
 
     # 3. Distribution of tx count by their session
     session_dis = df3.groupby(['session']).size().reset_index(name = 'tx_count')
@@ -312,7 +309,6 @@ def visualization(df3):
     expander = st.expander("See the Explanation about this Chart")
     expander.write("""Based on the histogram above, credit card limit have left skew distribution""")
 
-@st.cache_resource
 def outlier_handling():
     code = """
     df_outlier = pd.DataFrame()
@@ -335,7 +331,6 @@ def outlier_handling():
     """
     st.code(code, language='python')
     
-@st.cache_resource
 def standardization():
     code = """
     from sklearn.preprocessing import StandardScaler
@@ -365,7 +360,7 @@ def standardization():
     df_outlier[columns_to_standardize] = stdz_data
     """
     st.code(code, language='python')
-@st.cache_data(experimental_allow_widgets=True)
+
 def early_stopping():
     code = """
     from tensorflow.keras.callbacks import EarlyStopping
@@ -383,8 +378,7 @@ def early_stopping():
     if there is no improvement of validation loss using (min_delta) to count 
     after some number of patience (interval epochs wait before stop). 
     Using Early Stopping we can stop training model before they begin to overfit""")
-    
-@st.cache_resource    
+       
 def modeling():
     code = """
     # define input layer
@@ -432,7 +426,6 @@ def modeling():
     expander = st.expander("Click Here, to look the plot")
     expander.image(image)
 
-@st.cache_resource
 def reconstruct_data():
     code = """
     # calculate reconstruction errors for training data
@@ -485,7 +478,6 @@ df8_head = result[15]
 def final_result(df8_head):
     st.dataframe(df8_head)
 
-@st.cache_data
 def text_input():
     user_input = st.text_input("Search specific keyword from this dataframe")
     
@@ -495,7 +487,6 @@ def text_input():
     st.write("Result:")
     st.dataframe(filtered_df)
     
-@st.cache_resource
 def explanation():
     expander = st.expander("Explanation about the result")
     expander.write("""
@@ -505,7 +496,6 @@ def explanation():
     By doing this, we create a dependent variable or column for classification, which can be used for supervised learning classification tasks in the future.
     """)
     
-@st.cache_resource
 def maps():
     image = Image.open("Deployment/fraud_map.png")
     expander = st.expander("Fraud Map")
@@ -520,7 +510,6 @@ def maps():
     expander.image(image_2)
     
     st.markdown("[Interactive Version of Normal Map](https://public.tableau.com/app/profile/syaerul.rochman/viz/normal_tx/city)")
-
 
 if __name__ == "__main__":
     df1, df2, df_mix, df_mix_snip, df3, df3_head, df4, df4_head, df5, df5_head, df6, df6_head, df7, df7_head, df8, df8_head = load_and_transform()
