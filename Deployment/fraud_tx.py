@@ -58,7 +58,8 @@ result = load_and_transform()
 def header():
     image = Image.open("Deployment/fraud_detect.png")
     st.image(image, caption="Example of Fraud Activities")
-
+    
+@st.cache_data
 def main_page(df_mix_snip, df3_head, df4_head, df5_head, df6_head, df7_head, df8):
     tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(['Load DataFrame','Viz','Outlier Handling','Standardization','Modeling','Result','Maps'])
     
