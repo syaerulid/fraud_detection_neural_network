@@ -152,7 +152,7 @@ def sidebar():
     st.sidebar.write("https://www.linkedin.com/in/syaerul-rochman/")
 
 df3 = result[5]
-st.cache_resource
+@st.cache_resource
 def visualization(df3):
     # 1. Distribution of transaction hour
 
@@ -383,7 +383,7 @@ def early_stopping():
     after some number of patience (interval epochs wait before stop). 
     Using Early Stopping we can stop training model before they begin to overfit""")
     
-st.cache_data
+@st.cache_data
 def modeling():
     code = """
     # define input layer
@@ -484,7 +484,7 @@ def reconstruct_data():
     """)
     
 df8_head = result[15]
-st.cache_data
+@st.cache_data
 def final_result(df8_head):
     st.dataframe(df8_head)
 
@@ -506,7 +506,7 @@ def explanation():
     By doing this, we create a dependent variable or column for classification, which can be used for supervised learning classification tasks in the future.
     """)
     
-st.cache_data
+@st.cache_data
 def maps():
     image = Image.open("Deployment/fraud_map.png")
     expander = st.expander("Fraud Map")
